@@ -1,0 +1,14 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /user/ubuntu
+hooks:
+  BeforeInstall:
+    - location: install_docker.sh
+      timeout: 300
+      runas: root
+  AfterInstall:
+    - location: build_docker_image.sh
+      timeout: 300
+      runas: root

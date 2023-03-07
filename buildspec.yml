@@ -1,0 +1,15 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.10
+  pre_build:
+    commands:
+      - echo checking python version
+      - echo testing the app.py
+      - python --version
+      - python app_tester.py
+  build:
+    commands:
+      - bash build_docker_image.sh
