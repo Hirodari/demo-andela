@@ -8,8 +8,8 @@ then
   # sudo systemctl enable docker
   echo "installing docker ubuntu"
   sudo apt-get update
-  sudo apt-get upgrade
-  sudo apt install docker.io
+  sudo apt-get upgrade -y
+  sudo apt install docker.io -y
   systemctl start docker
   systemctl enable docker
   docker --version

@@ -20,9 +20,12 @@
 # fi
 
 # test python code
-
+exec 3>&1 4>&2
+trap 'exec 2>&4 1>&3' 0 1 2 3
+exec 1>/home/ubuntu/out.log 2>&1
 # build the docker image
-sudo docker build -t strealit:1.0 .
+echo "building a docker image"
+sudo docker build -t streamlit:1.0 .
 
 # login to your docker hub account
 # cat ~/my_password.txt | sudo docker login --username hirodaridevdock --password-stdin
@@ -35,4 +38,4 @@ sudo docker build -t strealit:1.0 .
 
 # start the container to test the image
 echo "running docker run"
-sudo docker run -dp 8501:8501 strealit:1.0
+sudo docker run -dp 8501:8501 streamlit:1.0
