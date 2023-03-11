@@ -98,7 +98,7 @@ resource "aws_instance" "ec2_instance" {
   key_name               =  "hiro_kp"
 
   tags = {
-    Name = "docker server"
+    Name = "streamlit docker server"
   }
 }
 
@@ -168,5 +168,5 @@ resource "null_resource" "name" {
 
 # print the url of the container
 output "container_url" {
-  value = join("", ["http://", aws_instance.ec2_instance.public_dns],":8501")
+  value = join("", ["http://", aws_instance.ec2_instance.public_dns, ":8501"])
 }
