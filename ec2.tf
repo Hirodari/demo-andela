@@ -1,9 +1,9 @@
 # configured aws provider with proper credentials
-# aws configure profile aws configure --profile new_name
+# aws confonfigure profile aws configure --profile new_name
 # aws list configuration aws configure list [--profile --profile-name]
 provider "aws" {
   region  = "us-east-1"
-  profile = "hirodaridev"
+  profile = "devops"
 }
 
 
@@ -110,7 +110,7 @@ resource "null_resource" "name" {
   connection {
     type        = "ssh"
     user        = "ec2-user"
-    private_key = file("/home/fredbitenyo/Desktop/aws-docs/demo-repo/terra_docker/hiro_kp.pem")
+    private_key = file("/home/hiro/devops/aws-docs/aws_streamlit/hiro_kp.pem")
     host        = aws_instance.ec2_instance.public_ip
   }
 
@@ -141,7 +141,7 @@ resource "null_resource" "name" {
 
   # copy the build_docker_image.sh from your computer to the ec2 instance
   provisioner "file" {
-    source      = "install_build_docker_image.sh"
+    source      = "build_docker_image.sh"
     destination = "/home/ec2-user/build_docker_image.sh"
   }
 
@@ -154,7 +154,7 @@ resource "null_resource" "name" {
   # set permissions and run the build_docker_image.sh file
   provisioner "remote-exec" {
     inline = [
-        "sudo chmod +x /home/ec2-user/install_build_docker_image.sh",
+        "sudo chmod +x /home/ec2-user/build_docker_image.sh",
         "bash /home/ec2-user/build_docker_image.sh",
 
     ]
