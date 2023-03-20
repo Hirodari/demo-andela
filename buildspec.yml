@@ -9,6 +9,7 @@ phases:
       - echo checking python version
       - echo testing the app.py
       - python --version
+      - python -m pip install pandas openpyxl
       - python app_tester.py
   build:
     commands:
