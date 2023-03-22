@@ -11,7 +11,7 @@
 # exec 1>/home/ubuntu/out.log 2>&1
 # build the docker image
 echo "building a docker image"
-docker build -t streamlit:1.0 .
+sudo docker build -t streamlit:1.0 .
 
 # login to your docker hub account
 # cat ~/my_password.txt | sudo docker login --username hirodaridevdock --password-stdin
@@ -24,5 +24,5 @@ docker build -t streamlit:1.0 .
 
 # start the container to test the image
 echo "running docker run"
-docker run -dp 8501:8501 streamlit:1.0
+sudo docker run -dp 8501:8501 streamlit:1.0
 echo "Thank you."
