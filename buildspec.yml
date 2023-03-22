@@ -14,3 +14,7 @@ phases:
   build:
     commands:
       - bash build_docker_image.sh
+  artifacts:
+    files:
+      - '**/*'
+    name: dev-backend-build-artifact
