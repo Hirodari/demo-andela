@@ -25,3 +25,4 @@ docker build -t streamlit:1.0 .
 # start the container to test the image
 echo "running docker run"
 docker run -dp 8501:8501 streamlit:1.0
+echo "Thank you."
